@@ -180,13 +180,8 @@ textarea {
 
 		<form action="/board/update" method="post">
 			<div class="form-group">
-<<<<<<< HEAD
 				<label for="boardNo">작성자 번호</label> <input type="text"
 					id="boardNo" name="boardNo" value="${board.boardNo}" readonly>
-=======
-				<label for="no">작성자 번호</label> <input type="text"
-					id="no" name="no" value="${board.no}" readonly>
->>>>>>> feature/board
 			</div>
 			<div class="form-group">
 				<label for="writer">작성자(Writer)</label> <input type="text"

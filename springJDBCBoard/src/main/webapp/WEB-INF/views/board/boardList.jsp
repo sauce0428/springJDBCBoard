@@ -165,25 +165,16 @@
         color: white;
         text-shadow: 0 0 5px var(--t1-red);
     }
-<<<<<<< HEAD
-=======
     .btn-group {
         display: flex;
         gap: 10px; /* 버튼 사이의 간격 */
     }
->>>>>>> feature/board
 </style>
 </head>
 <body>
     
     <div class="container">
     <div class="header-box">
-<<<<<<< HEAD
-        <h1>BOARD <span>LIST</span></h1>
-        <a href="/board/boardlist" class="btn-write">새로고침</a>
-        <a href="/board/insertForm" class="btn-write">게시판입력</a>
-    </div>
-=======
     <h1>BOARD <span>LIST</span></h1>
     
     <div class="btn-group">
@@ -191,7 +182,6 @@
         <a href="/board/insertForm" class="btn-write">New Mission</a>
     </div>
 </div>
->>>>>>> feature/board
 
     <div class="search-container">
         <form action="/board/search" method="get" class="search-form">
@@ -219,15 +209,9 @@
                 <c:when test="${not empty boardList}">
                     <c:forEach var="board" items="${boardList}">
                         <tr>
-<<<<<<< HEAD
                             <td>${board.boardNo}</td>
                             <td class="title-cell">
                                 <a href="/board/detail?boardNo=${board.boardNo}">${board.title}</a>
-=======
-                            <td>${board.no}</td>
-                            <td class="title-cell">
-                                <a href="/board/detail?no=${board.no}">${board.title}</a>
->>>>>>> feature/board
                             </td>
                             <td>${board.writer}</td>
                             <td><fmt:formatDate value="${board.regDate}" pattern="yyyy.MM.dd" /></td>
