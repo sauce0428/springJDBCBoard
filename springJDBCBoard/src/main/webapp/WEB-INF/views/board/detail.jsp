@@ -114,7 +114,11 @@
 
 <div class="detail-container">
     <div class="detail-header">
+<<<<<<< HEAD
         <span class="post-no">POST NO. ${board.boardNo}</span>
+=======
+        <span class="post-no">POST NO. ${board.no}</span>
+>>>>>>> feature/board
         <h1>${board.title}</h1>
         <div class="post-info">
             <span>WRITER: <b>${board.writer}</b></span>
@@ -128,8 +132,13 @@
         <a href="/board/boardlist" class="btn btn-list">게시판 목록</a>
         
         <div class="btn-group">
+<<<<<<< HEAD
             <a href="/board/updateForm?boardNo=${board.boardNo}" class="btn btn-edit">글 수정하기</a>
             <a href="/board/delete?boardNo=${board.boardNo}" class="btn btn-delete" onclick="return confirm('정말 삭제하시겠습니까?')">글 삭제하기</a>
+=======
+            <a href="/board/updateForm?no=${board.no}" class="btn btn-edit">글 수정하기</a>
+            <a href="/board/delete?no=${board.no}" class="btn btn-delete" onclick="return confirm('정말 삭제하시겠습니까?')">글 삭제하기</a>
+>>>>>>> feature/board
         </div>
     </div>
     
