@@ -13,7 +13,6 @@ import com.board.domain.Board;
 import com.board.service.BoardService;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -21,20 +20,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/board")
 public class BoardController {
+	
 	@Autowired
 	private BoardService boardService;
 	
 	@GetMapping("/insertForm")
-	public String boardInsertForm(Board board) {
+	public String boardInsertForm(Model model) {
 		return "board/insertForm";
 	}
-
+	
 	@PostMapping("/insert")
-	public String boardInsert(Board board) {
-		log.info("insert board="+board.toString());
+	public String boardInsert(Board board, Model model) {
+		log.info("insert board = " + board.toString());
 		try {
 			int count = boardService.insertBoard(board);
-			if (count > 0) {
+			if(count > 0) {
 				return "board/success";
 			}
 		} catch (Exception e) {
@@ -43,31 +43,105 @@ public class BoardController {
 		return "board/failed";
 	}
 	
-	@GetMapping("/boardList")
-	public String boardList(Board board, Model model) {
-		log.info("boardList");
+	@GetMapping("/boardlist")
+	public String boardList(Model model) {
+		log.info("boardlist");
+		
 		try {
 			List<Board> boardList = boardService.boardList();
-			model.addAttribute("boardList", boardList);
+			
+			model.addAttribute("boardList",boardList);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return "board/boardList";
 	}
-
+	
 	@GetMapping("/detail")
 	public String boardDetail(Board b, Model model) {
-		log.info("boardDetail board="+b.toString());
+		log.info("boardDetail board = "+b.toString());
+		
 		try {
 			Board board = boardService.selectByNo(b);
 			if(board == null) {
+				return "board/failed";
+			}
+			model.addAttribute("board",board);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "board/detail";
+	}
+	
+	@GetMapping("/delete")
+	public String boardDelete(Board board, Model model) {
+		log.info("boardDetail board = "+board.toString());
+		
+		try {
+			int count = boardService.deleteBoard(board);
+			if(count > 0) {
+				model.addAttribute("message", "%d 님의 정보가 삭제되었습니다.".formatted(board.getBoardNo()));
+				return "board/success";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("message", "%d 님의 정보 삭제가 실패하였습니다.".formatted(board.getBoardNo()));
+		return "board/failed";
+	}
+	
+	@GetMapping("/updateForm")
+	public String boardUpdateForm(Board b, Model model) {
+		log.info("updateForm board = "+b.toString());
+		
+		try {
+			Board board = boardService.selectByNo(b);
+			if(board == null) {
+				model.addAttribute("message", "%d 님의 정보가 없습니다".formatted(b.getBoardNo()));
 				return "board/failed";
 			}
 			model.addAttribute("board", board);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "board/detail";
+		return "board/updateForm";
+	}
+	
+	@PostMapping("/update")
+	public String updateBoard(Model model, Board board) {
+		log.info("updateBoard board = "+board.toString());
+		
+		try {
+			int count = boardService.updateBoard(board);
+			if(count > 0) {
+				model.addAttribute("message", "%d 님의 게시판이 수정되었습니다.".formatted(board.getBoardNo()));
+				return "board/success";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("message", "%d 님의 게시판이 수정되지 않았습니다.".formatted(board.getBoardNo()));
+		return "board/failed";
+	}
+	
+	@GetMapping("/search")
+	public String boardSearch(Model model, Board board) {
+		log.info("search board = " + board.toString());
+		
+		try {
+			List<Board> boardList = boardService.boardSerch(board);
+			
+			model.addAttribute("boardList",boardList);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "board/boardList";
 	}
 	
 	

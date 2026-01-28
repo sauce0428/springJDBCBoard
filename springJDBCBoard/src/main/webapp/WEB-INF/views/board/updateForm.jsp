@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -173,31 +174,34 @@ textarea {
 	<div class="write-container">
 		<div class="header">
 			<h1>
-				T1 COMMUNITY <span>POST</span>
+				T1 COMMUNITY<br><span>${board.writer}님의 게시판 수정</span>
 			</h1>
 		</div>
 
-		<form action="/board/insert" method="post">
+		<form action="/board/update" method="post">
+			<div class="form-group">
+				<label for="boardNo">작성자 번호</label> <input type="text"
+					id="boardNo" name="boardNo" value="${board.boardNo}" readonly>
+			</div>
 			<div class="form-group">
 				<label for="writer">작성자(Writer)</label> <input type="text"
-					id="writer" name="writer" placeholder="작성자 이름을 입력하세요" required>
+					id="writer" name="writer" value="${board.writer}" required>
 			</div>
 
 			<div class="form-group">
 				<label for="title">제목(Title)</label> <input type="text" id="title"
-					name="title" placeholder="게시글 제목을 입력하세요" required>
+					name="title" value="${board.title}" required>
 			</div>
 
 			<div class="form-group">
 				<label for="content">내용(Content)</label>
-				<textarea id="content" name="content"
-					placeholder="T1 선수들에게 보낼 응원의 메시지를 작성하세요"></textarea>
+				<textarea id="content" name="content">${board.content}</textarea>
 			</div>
 
 			<div class="btn-area">
 				<a href="/board/boardlist" class="btn-list">게시판 목록</a>
-				<button type="submit" class="btn btn-submit">게시판 등록</button>
-				<button type="reset" class="btn btn-reset">등록 취소</button>
+				<button type="submit" class="btn btn-submit">게시판 수정</button>
+				<button type="reset" class="btn btn-reset">수정 취소</button>
 			</div>
 		</form>
 

@@ -1,84 +1,101 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>등록 완료</title>
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-
+<title>T1 Community | Transmission Complete</title>
 <style>
-body {
-    min-height: 100vh;
-    background: linear-gradient(270deg, #00c6ff, #0072ff);
-    background-size: 400% 400%;
-    animation: bgMove 12s ease infinite;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    :root {
+        --t1-red: #E2012D;
+        --t1-black: #0f0f0f;
+        --t1-gray: #1a1a1a;
+        --t1-gold: #C69C6D;
+    }
 
-@keyframes bgMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+    body {
+        background-color: var(--t1-black);
+        font-family: 'Pretendard', sans-serif;
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
 
-.card-box {
-    background: rgba(255,255,255,0.18);
-    backdrop-filter: blur(16px);
-    border-radius: 20px;
-    padding: 45px;
-    text-align: center;
-    color: #fff;
-    box-shadow: 0 30px 70px rgba(0,0,0,.3);
-    animation: pop 0.6s ease;
-}
+    .result-container {
+        text-align: center;
+        background: var(--t1-gray);
+        padding: 60px;
+        border-radius: 20px;
+        border: 2px solid var(--t1-gold); /* 성공의 상징 골드 테두리 */
+        box-shadow: 0 0 40px rgba(198, 156, 109, 0.2);
+        max-width: 500px;
+        width: 90%;
+    }
 
-@keyframes pop {
-    from { transform: scale(0.9); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
+    .icon-box {
+        font-size: 50px;
+        color: var(--t1-red);
+        margin-bottom: 20px;
+        animation: pulse 1.5s infinite;
+    }
 
-.icon-success {
-    font-size: 4rem;
-    color: #a6ffcb;
-}
+    @keyframes pulse {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.1); opacity: 0.7; }
+        100% { transform: scale(1); opacity: 1; }
+    }
 
-.btn-main {
-    background: linear-gradient(135deg, #43e97b, #38f9d7);
-    border: none;
-    color: #000;
-    font-weight: 700;
-    padding: 12px 36px;
-    border-radius: 30px;
-    transition: .3s;
-}
+    h2 {
+        font-size: 1.8rem;
+        font-weight: 900;
+        margin-bottom: 15px;
+        letter-spacing: -1px;
+    }
 
-.btn-main:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(56,249,215,.5);
-}
+    p {
+        color: #bbb;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    .btn-list {
+        display: inline-block;
+        padding: 15px 40px;
+        background: var(--t1-red);
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 5px;
+        transition: 0.3s;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-list:hover {
+        background: #ffffff;
+        color: var(--t1-red);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    }
+
+    .auto-redirect {
+        margin-top: 25px;
+        font-size: 0.8rem;
+        color: #555;
+    }
 </style>
 </head>
-
 <body>
 
-<div class="card-box">
-    <div class="icon-success mb-3">
-        <i class="bi bi-check-circle-fill"></i>
-    </div>
+<div class="result-container">
+    <div class="icon-box">🏆🏆🏆🏆🏆🏆</div>
+    <h2>MISSION <span style="color:var(--t1-red)">COMPLETE</span></h2>
+    <p>${message}</p>
 
-    <h2 class="fw-bold mb-3">게시글 등록 완료!</h2>
-    <p class="mb-4">게시글이 정상적으로 저장되었습니다.</p>
+    <a href="/board/insertForm" class="btn-list">New Board Insert</a>
+    <a href="/board/boardlist" class="btn-list">View Board List</a>
 
-    <!-- 🔥 버튼 스타일 통일 -->
-    <div class="d-flex justify-content-center gap-3">
-        <a href="/board/insertForm" class="btn btn-main">목록으로</a>
-        <a href="/board/write" class="btn btn-main">글 더 쓰기</a>
-    </div>
 </div>
 
 </body>
