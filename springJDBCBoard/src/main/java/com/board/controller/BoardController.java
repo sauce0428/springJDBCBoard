@@ -84,21 +84,13 @@ public class BoardController {
 		try {
 			int count = boardService.deleteBoard(board);
 			if(count > 0) {
-<<<<<<< HEAD
 				model.addAttribute("message", "%d 님의 정보가 삭제되었습니다.".formatted(board.getBoardNo()));
-=======
-				model.addAttribute("message", "%d 님의 정보가 삭제되었습니다.".formatted(board.getNo()));
->>>>>>> feature/board
 				return "board/success";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
 		model.addAttribute("message", "%d 님의 정보 삭제가 실패하였습니다.".formatted(board.getBoardNo()));
-=======
-		model.addAttribute("message", "%d 님의 정보 삭제가 실패하였습니다.".formatted(board.getNo()));
->>>>>>> feature/board
 		return "board/failed";
 	}
 	
@@ -109,11 +101,7 @@ public class BoardController {
 		try {
 			Board board = boardService.selectByNo(b);
 			if(board == null) {
-<<<<<<< HEAD
 				model.addAttribute("message", "%d 님의 정보가 없습니다".formatted(b.getBoardNo()));
-=======
-				model.addAttribute("message", "%d 님의 정보가 없습니다".formatted(b.getNo()));
->>>>>>> feature/board
 				return "board/failed";
 			}
 			model.addAttribute("board", board);
@@ -130,21 +118,13 @@ public class BoardController {
 		try {
 			int count = boardService.updateBoard(board);
 			if(count > 0) {
-<<<<<<< HEAD
 				model.addAttribute("message", "%d 님의 게시판이 수정되었습니다.".formatted(board.getBoardNo()));
-=======
-				model.addAttribute("message", "%d 님의 게시판이 수정되었습니다.".formatted(board.getNo()));
->>>>>>> feature/board
 				return "board/success";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
 		model.addAttribute("message", "%d 님의 게시판이 수정되지 않았습니다.".formatted(board.getBoardNo()));
-=======
-		model.addAttribute("message", "%d 님의 게시판이 수정되지 않았습니다.".formatted(board.getNo()));
->>>>>>> feature/board
 		return "board/failed";
 	}
 	
