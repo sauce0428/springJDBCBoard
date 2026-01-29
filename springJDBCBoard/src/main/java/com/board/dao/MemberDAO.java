@@ -17,7 +17,7 @@ public class MemberDAO {
 //		int count = jdbcTemplate.update(query, board.getTitle(), board.getContent(), board.getWriter());
 //		return count;
 //	}
-//
+
 //	public List<Board> boardList() {
 //		String query = "select * from jdbcBoard where no > 0 order by no desc, regdate desc";
 //
@@ -35,7 +35,7 @@ public class MemberDAO {
 //		});
 //		return boardList;
 //	}
-//
+
 //	public Board selectByNo(Board board) {
 //		String query = "select * from jdbcBoard where no = ?";
 //
